@@ -1,15 +1,21 @@
-import paramsHelper from "utils/paramsHelper";
+import enzoicMiddleware from 'utils/enzoicMiddleware';
 
-export default paramsHelper((req, res) => {
+export default enzoicMiddleware((req, res) => {
+    const username = req.body.username;
+
     if (req.method !== 'POST') {
-        res.status(405).json({ message: 'Method not allowed. Allowed methods: POST' });
-        return;
+        return res.status(405).json({ message: 'Method not allowed. Allowed methods: POST' });
     }
 
-    if (!req.body.username) {
-        res.status(422).json({ message: 'Missing required attribute: username' });
-        return;
+    if (!username) {
+        return res.status(422).json({ message: 'Missing required attribute: username' });
     }
 
-    res.send('PANDA');
+    req.enzoic.getExposuresForUser(username, (err, result) => {
+        if (err) {
+            res.status(500).json({ message: `Failed to fetch results from Enzoic API. Error: ${err}` });
+        } else {
+            res.json({ exposures: result.exposures });
+        }
+    });
 });
