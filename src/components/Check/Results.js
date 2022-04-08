@@ -9,8 +9,16 @@ import {
 } from "@chakra-ui/react";
 import { WarningTwoIcon } from '@chakra-ui/icons';
 
-const Results = ({ results, setSelectedResult }) => {
-    const handleClick = result => setSelectedResult(result);
+const Results = ({ results, credentials: { apiKey, secretKey }, setSelectedResult }) => {
+    const handleClick = async result => {
+        const res = await fetch(`/api/exposure/${result}?apiKey=${apiKey}&secret=${secretKey}`, {
+            method: 'GET'
+        });
+
+        const exposure = await res.json();
+
+        setSelectedResult(exposure);
+    };
 
     return (
         <>
