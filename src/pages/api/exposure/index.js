@@ -1,5 +1,11 @@
 import enzoicMiddleware from 'utils/enzoicMiddleware';
 
+export const config = {
+    api: {
+        externalResolver: true
+    },
+};
+
 export default enzoicMiddleware((req, res) => {
     const username = req.body.username;
 
