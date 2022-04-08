@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import { Box, Flex, Stack, Image } from '@chakra-ui/react';
 
+import Login from 'components/Login';
+
 const Home = () => {
     return (
         <Box>
@@ -23,7 +25,8 @@ const Home = () => {
                     justifyContent="center"
                     alignItems="center"
                 >
-                    <Image src="/enzoicLogo_regularFont.png" alt="Enzoic logo" />
+                    <Image src="/enzoicLogo_regularFont.png" alt="Enzoic logo" mb="7rem" />
+                    <Login />
                 </Stack>
             </Flex>
         </Box>
