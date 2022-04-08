@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Box, Flex, Stack, Image } from '@chakra-ui/react';
 
 import Login from 'components/Login';
+import Check from 'components/Check';
 
 const Home = () => {
     const [credentials, setCredentials] = useState(null);
@@ -32,7 +33,7 @@ const Home = () => {
                     {!credentials ? (
                         <Login setCredentials={setCredentials} />
                     ) : (
-                        <p>'PANDA'</p>
+                        <Check />
                     )}
                 </Stack>
             </Flex>
