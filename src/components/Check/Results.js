@@ -7,9 +7,9 @@ import {
     Button,
     Heading
 } from "@chakra-ui/react";
-import { WarningTwoIcon } from '@chakra-ui/icons';
+import { CloseIcon, WarningTwoIcon } from '@chakra-ui/icons';
 
-const Results = ({ results, credentials: { apiKey, secretKey }, setSelectedResult }) => {
+const Results = ({ results, credentials: { apiKey, secretKey }, setResults, setSelectedResult }) => {
     const handleClick = async result => {
         const res = await fetch(`/api/exposure/${result}?apiKey=${apiKey}&secret=${secretKey}`, {
             method: 'GET'
@@ -22,7 +22,10 @@ const Results = ({ results, credentials: { apiKey, secretKey }, setSelectedResul
 
     return (
         <>
-            <Heading color="#fff" fontWeight="200">Results</Heading>
+            <Heading color="#fff" fontWeight="200">
+                Results
+                <CloseIcon boxSize="1.5rem" marginLeft="2rem" cursor="pointer" onClick={() => setResults(null)} />
+            </Heading>
             <Box minW={{ base: "90%", md: "468px" }}>
                 {results.length > 0 ? (
                     <Stack

@@ -9,9 +9,9 @@ const Check = ({ credentials }) => {
     const [selectedResult, setSelectedResult] = useState(null);
 
     return (selectedResult ? (
-            <SelectedResult result={selectedResult} />
+            <SelectedResult result={selectedResult} setSelectedResult={setSelectedResult} />
         ) : results ? (
-            <Results results={results} credentials={credentials} setSelectedResult={setSelectedResult} />
+            <Results results={results} credentials={credentials} setResults={setResults} setSelectedResult={setSelectedResult} />
         ) : (
             <Username credentials={credentials} setResults={setResults} />
         )
