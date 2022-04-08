@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.1.7",
@@ -21,7 +22,14 @@
     "react-dom": "18.0.0"
   },
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.17.9",
     "eslint": "8.12.0",
-    "eslint-config-next": "12.1.4"
+    "eslint-config-next": "12.1.4",
+    "jest": "^27.5.1"
+  },
+  "jest": {
+    "clearMocks": true,
+    "moduleDirectories": ["node_modules", "src"],
+    "testPathIgnorePatterns": ["/__utils__/"]
   }
 }

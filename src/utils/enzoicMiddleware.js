@@ -1,6 +1,6 @@
 import Enzoic from '@enzoic/enzoic';
 
-const enzoicMiddlware = handler => (req, res) => {
+const enzoicMiddleware = handler => (req, res) => {
     const { apiKey, secret } = req.query;
 
     const missingParams = [];
@@ -17,4 +17,4 @@ const enzoicMiddlware = handler => (req, res) => {
     return handler(req, res);
 };
 
-export default enzoicMiddlware;
+export default enzoicMiddleware;
