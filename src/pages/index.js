@@ -1,9 +1,12 @@
 import Head from 'next/head';
+import { useState } from 'react';
 import { Box, Flex, Stack, Image } from '@chakra-ui/react';
 
 import Login from 'components/Login';
 
 const Home = () => {
+    const [credentials, setCredentials] = useState(null);
+    
     return (
         <Box>
             <Head>
@@ -26,7 +29,11 @@ const Home = () => {
                     alignItems="center"
                 >
                     <Image src="/enzoicLogo_regularFont.png" alt="Enzoic logo" mb="7rem" />
-                    <Login />
+                    {!credentials ? (
+                        <Login setCredentials={setCredentials} />
+                    ) : (
+                        <p>'PANDA'</p>
+                    )}
                 </Stack>
             </Flex>
         </Box>
