@@ -28,7 +28,7 @@ const Login = ({ setCredentials }) => {
     const handleLogin = e => {
         if (apiKey.length !== validKeyLength || secretKey.length !== validKeyLength) return;
 
-        setCredentials({ apiKey, secretKey });
+        setCredentials({ apiKey: encodeURIComponent(apiKey), secretKey: encodeURIComponent(secretKey) });
     }
 
     const apiKeyIsInvalid = apiKey.length !== validKeyLength;

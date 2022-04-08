@@ -18,7 +18,8 @@ const Home = () => {
             <Flex
                 flexDirection="column"
                 width="100wh"
-                height="100vh"
+                height="100%"
+                minHeight="100vh"
                 backgroundColor="#232f38"
                 justifyContent="center"
                 alignItems="center"
@@ -29,11 +30,11 @@ const Home = () => {
                     justifyContent="center"
                     alignItems="center"
                 >
-                    <Image src="/enzoicLogo_regularFont.png" alt="Enzoic logo" mb="7rem" />
+                    <Image src="/enzoicLogo_regularFont.png" alt="Enzoic logo" m="7rem 0" />
                     {!credentials ? (
                         <Login setCredentials={setCredentials} />
                     ) : (
-                        <Check />
+                        <Check credentials={credentials} />
                     )}
                 </Stack>
             </Flex>
